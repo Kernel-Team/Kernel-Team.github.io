@@ -9,7 +9,7 @@ author:	    "2puT"
 ---
 
 
-#### Linux kernel dump mechanism analysis
+## Linux kernel dump mechanism analysis
 
 * 想要了解 Linux 内核转储机制，就要从 kexec - > kdump - > crash 这个递进过程去分析。
 

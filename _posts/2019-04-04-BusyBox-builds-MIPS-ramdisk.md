@@ -8,7 +8,7 @@ categories: ramdisk
 author:	    "2puT"
 ---
 
-##### 使用 BusyBox 构建 ramdisk
+## 使用 BusyBox 构建 ramdisk
 
 一. 软件准备
 

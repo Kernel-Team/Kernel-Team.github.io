@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Make Section
+title:      Compile Section
 date:       2018-12-20 14:08:00
 summary:    Elaborate on the four stages of compiling a compiled language.
 image:	    "https://github.com/lina-not-linus"
@@ -8,7 +8,7 @@ categories: make
 author:	    "2puT"
 ---
 
-##### 细说编译性语言的编译四大阶段
+## 细说编译性语言的编译四大阶段
 
 
 > 编译的四个阶段：预处理（扩展各个宏与文件）、编译（得到汇编代码）、汇编（得到机器码）、链接（得到可执行文件）

@@ -8,7 +8,7 @@ categories: ramdisk
 author:	    "2puT"
 ---
 
-##### 自动化构建 MIPS 交叉工具链
+## 自动化构建 MIPS 交叉工具链
 
 > 推荐下载地址：https://github.com/loongson-community
 

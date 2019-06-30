@@ -8,7 +8,7 @@ categories: cross compile
 author:	    "2puT"
 ---
 
-##### 深入理解交叉编译(Cross Compile)
+## 深入理解交叉编译(Cross Compile)
 
 
 
