@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: post
 title: 联系我@Kernel-Team
-permalink: /about/
+permalink: /contact/
 no_duoshuo: true
 ---
 
