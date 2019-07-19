@@ -8,7 +8,7 @@ categories: ramdisk
 author:	    "2puT"
 ---
 
-# bootloader 运行机制分析(嵌入式领域)
+# bootloader 运行机制分析
 
 
 
