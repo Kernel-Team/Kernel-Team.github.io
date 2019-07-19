@@ -22,10 +22,12 @@ author:	    "2puT"
 
 ### 2. bootLoader的作用，对于 Linux 系统来说，从软件的角度看通常可以分为4个层次。
 
-	- [] 引导加载程序（boot代码和bootloader）
-	- [] Linux内核
-	- [] 文件系统+（GUI）
-	- [] 用户应用程序
+```
+    引导加载程序（boot代码和bootloader）
+	Linux内核
+	文件系统+（GUI）
+	用户应用程序
+```
 
 ### 3. bootloader 加载过程
 
