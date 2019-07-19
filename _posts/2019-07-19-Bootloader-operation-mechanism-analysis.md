@@ -15,19 +15,19 @@ Bootloader operation mechanism analysis
 一. bootloader 基础概念
 
 
-1.bootloader 是什么
+1. bootloader 是什么
 
 bootloader 是在操作系统内核运行之前运行的一段小程序。通过这段小程序，我们可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到合适的状态，以便为最终调试操作系统内核准备好正确的环境。
 
 通常 bootlooader 是严重依赖于硬件而实现的，特别是在嵌入式世界。因此，在嵌入式领域里建立一个通用的 bootloader 几乎是不可能的。尽管如此，我们仍然可以对 bootloader 归纳出一些通用的概念，以指导用户对特定的 bootloader 设计与实现。
 
-2.bootLoader的作用，对于 Linux 系统来说，从软件的角度看通常可以分为4个层次。
+2. bootLoader的作用，对于 Linux 系统来说，从软件的角度看通常可以分为4个层次。
 	- 引导加载程序（boot代码和bootloader）
 	- Linux内核
 	- 文件系统+（GUI）
 	- 用户应用程序
 
-3.bootloader 加载过程
+3. bootloader 加载过程
 
 引导加载程序是系统加电后运行的第一段软件代码，用于将内核映像从硬盘上读到RAM中，实现到核的入口点去运行，即开始启动操作系统。
 
@@ -41,14 +41,14 @@ bootloader 是在操作系统内核运行之前运行的一段小程序。通过
 所以概括 bootloader 的工作就是 —— 初始化系统的软硬件环境，使之满足操作系统的运行条件。当把一切软硬件环境都配置好之后，系统的控制权才会交给 OS 的内核，这个时候bootloader 的工作就结束链。
 
 
-1.bootLoader操作模式：（大多bootloader都包含两种不同的操作模式）
+1. bootLoader操作模式：（大多bootloader都包含两种不同的操作模式）
 	* 启动模式：bootloader从目标机上的某个固态存储设备上将操作系统加载到RAM中运行，整个过程没有用户的介入。
 	* 下载模式：目标机上的Bootloader通过串口连接或联网等方式从主机上下载文件（内核映像、根文件系统映像...），保存到目标机的RAM中，接着再被bootloader写到目标机的Flash类固态存储设备，该模式下通常会向终端用户提供一个简单的命令行接口。
 		- bootloader 与主机进行文件传输所用的通用设备及协议
 			+ 最常见的情况就是，目标机上的 Boot Loader 通过串口与主机之间进行文件传输，传输协议通常是 xmodem／ymodem／zmodem 协议中的一种。但是，串口传输的速度是有限的，因此通过以太网连接并借助 TFTP 协议来下载文件是个更好的选择。此外，在论及这个话题时，主机方所用的软件也要考虑。比如，在通过以太网连接和 TFTP 协议来下载文件时，主机方必须有一个软件用来的提供 TFTP 服务。
                          
 
-2.常用的bootLoader:
+2. 常用的bootLoader:
 
 ``` 
 	ARMBoot, PPCBoot, U-Boot, RedBoot, Blob, Vivi 
@@ -56,14 +56,14 @@ bootloader 是在操作系统内核运行之前运行的一段小程序。通过
         
 三. bootLoader基本原理
 
-1.对比 PC 上 bootloader 不同之处
+1. 对比 PC 上 bootloader 不同之处
 
 引导加载程序是系统加电后运行的第一段软件代码。回顾 PC 的体系结构我们可以知道，PC 机中的引导程序由 BIOS(其本质就是一段固件程序)和位于硬盘 MBR 中的 OS bootloader(例如 LILO、GRUB 等)一起组成。BIOS 在完成硬件检测和资源分配后，将硬盘 MBR 中的 bootloader 读到系统的 RAM 中，然后将控制器交给 OS bootloader。bootloader 的主要任务就是将内核映像从硬盘读到 RAM 中，然后跳转到内核的入口点去运行，也即开始启动操作系统。
 
 而在嵌入式系统中，通常并没有像 BIOS 那样的固件程序（有的嵌入式 CPU 也会内嵌一段短小的启动程序），因此整个系统的加载启动任务就完全由 bootloader 来完成。比如在一个基于 ARM7TDMI core 的嵌入式系统中，系统在上电或复位时通常都是从地址 0x00000000 处开始执行，而在这个地址处安排的通常就是系统的 bootloader 程序。
 
 
-2.bootloader 的安装媒介(嵌入式 Installation Medium)
+2. bootloader 的安装媒介(嵌入式 Installation Medium)
 
 当系统加电或复位后，所有的 CPU 通常都从某个由 CPU 制造商预先安排的地址上取指令。比如，基于 ARM7TDMI core 的 CPU 在复位时通常都从地址 0x00000000 取它的第一条指令。而基于 CPU 构建的嵌入式系统通常都有某种类型的固态存储设备(比如：ROM、EPROM 或 FLASH 等)被映射到这个预先安排的地址上。因此在系统加电后，CPU 将首先执行 bootloader 程序。
 
@@ -73,19 +73,19 @@ bootloader 是在操作系统内核运行之前运行的一段小程序。通过
 |:---|:---|:---|:---|
 |bootloader|boot parameters|Kernel|root filesystem|
 
-3.用来控制 bootloader 的设备或机制
+3. 用来控制 bootloader 的设备或机制
 
 主机和目标机之间一般通过串口建立连接，bootloader 软件在执行时通常会通过串口来进行 I/O，比如：输出打印信息到串口，从串口读取用户控制字符等。
 
 Boot Loader 的启动过程是单阶段（Single Stage）还是多阶段（Multi-Stage）
 通常多阶段的 Boot Loader 能提供更为复杂的功能，以及更好的可移植性。从固态存储设备上启动的 Boot Loader 大多都是 2 阶段的启动过程，也即启动过程可以分为 stage 1 和 stage 2 两部分。
 
-4.bootloader 环境的依赖性
+4. bootloader 环境的依赖性
 
 （假定内核映像与根文件映像（可以在固态存储设备运行）都被加载到RAM中运行）
         通常，BootLoader是严重地依赖于硬件而实现的，除了依赖于CPU的体系结构外，bootLoader实际上也依赖于具体的嵌入式板级设备。
         
-5.bootloader 分为 stage1 和 stage2 两部分
+5. bootloader 分为 stage1 和 stage2 两部分
 
 由于bootloader的实现依赖于CPU的体系结构，因此大多数bootloader分为stage1和stage2两个部分:
 
@@ -111,14 +111,14 @@ Boot Loader 的启动过程是单阶段（Single Stage）还是多阶段（Multi
 
 四. bootloader 的 stage1 阶段细节
 
-1.基本的硬件初始化
+1. 基本的硬件初始化
 	* __屏蔽所有的中断__：为中断提供服务通常是 OS 设备驱动程序的责任，因此在 Boot Loader 的执行全过程中可以不必响应任何中断。中断屏蔽可以通过写 CPU 的中断屏蔽寄存器或状态寄存器（比如 ARM 的 CPSR 寄存器）来完成。
 	* __设置 CPU 的速度和时钟频率__：
 	* __RAM 初始化__：包括正确地设置系统的内存控制器的功能寄存器以及各内存库控制寄存器等。
 	* __初始化 LED__：典型地，通过 GPIO 来驱动 LED，其目的是表明系统的状态是 OK 还是 Error。如果板子上没有 LED，那么也可以通过初始化 UART 向串口打印 Boot Loader 的 Logo 字符信息来完成这一点。
 	* __关闭 CPU 内部指令/数据 cache__
 	
-2.为加载 stage2 准备 RAM 空间
+2. 为加载 stage2 准备 RAM 空间
 
 为了获得更快的执行速度，通常把 stage2 加载到 RAM 空间中来执行，因此必须为加载 Boot Loader 的 stage2 准备好一段可用的 RAM 空间范围。
 
@@ -143,11 +143,11 @@ stage2_end＝stage2_start＋stage2_size
 ```
 
 
-3.拷贝 stage2 到 ROM
+3. 拷贝 stage2 到 ROM
 
 拷贝时要确定两点：(1) stage2 的可执行映象在固态存储设备的存放起始地址和终止地址；(2) RAM 空间的起始地址。
 
-4.设置堆栈指针 sp
+4. 设置堆栈指针 sp
 
 堆栈指针的设置是为了执行 C 语言代码作好准备。通常我们可以把 sp 的值设置为(stage2_end-4)，也即在 3.1.2 节所安排的那个 1MB 的 RAM 空间的最顶端(堆栈向下生长)。
 
@@ -157,7 +157,7 @@ stage2_end＝stage2_start＋stage2_size
 
 ![系统内存布局](https://www.ibm.com/developerworks/cn/linux/l-btloader/images/image002.gif)
 
-5.跳转到 stage2 的 C 入口点
+5. 跳转到 stage2 的 C 入口点
 
 在上述一切都就绪后，就可以跳转到 Boot Loader 的 stage2 去执行了。比如，在 ARM 系统中，这可以通过修改 PC 寄存器为合适的地址来实现。bootloader 的 stage2 可执行映象刚被拷贝到 RAM 空间时的系统内存布局如上图。
 
@@ -179,7 +179,7 @@ _trampoline:
 
 可以看出，当 main() 函数返回后，我们又用一条跳转指令重新执行 trampoline 程序――当然也就重新执行 main() 函数，这也就是 trampoline(弹簧床)一词的意思所在。
 
-1.初始化本阶段要使用的硬件设备
+1. 初始化本阶段要使用的硬件设备
 
 这通常包括：（1）初始化至少一个串口，以便和终端用户进行 I/O 输出信息；（2）初始化计时器等。
 
@@ -187,7 +187,7 @@ _trampoline:
 
 设备初始化完成后，可以输出一些打印信息，程序名字字符串、版本号等。
 
-2.检测系统的内存映射（memory map）
+2. 检测系统的内存映射（memory map）
 
 所谓内存映射就是指在整个 4GB 物理地址空间中有哪些地址范围被分配用来寻址系统的 RAM 单元。比如，在 SA-1100 CPU 中，从 0xC000,0000 开始的 512M 地址空间被用作系统的 RAM 地址空间，而在 Samsung S3C44B0X CPU 中，从 0x0c00,0000 到 0x1000,0000 之间的 64M 地址空间被用作系统的 RAM 地址空间。虽然 CPU 通常预留出一大段足够的地址空间给系统 RAM，但是在搭建具体的嵌入式系统时却不一定会实现 CPU 预留的全部 RAM 地址空间。也就是说，具体的嵌入式系统往往只把 CPU 预留的全部 RAM 地址空间中的一部分映射到 RAM 单元上，而让剩下的那部分预留 RAM 地址空间处于未使用状态。 __由于上述这个事实，因此 Boot Loader 的 stage2 必须在它想干点什么 (比如，将存储在 flash 上的内核映像读到 RAM 空间中) 之前检测整个系统的内存映射情况，也即它必须知道 CPU 预留的全部 RAM 地址空间中的哪些被真正映射到 RAM 地址单元，哪些是处于 "unused" 状态的。__
 
@@ -267,7 +267,7 @@ for(i = 0, addr = MEM_START; addr < MEM_END; addr += PAGE_SIZE) {
 
 在用上述算法检测完系统的内存映射情况后，Boot Loader 也可以将内存映射的详细信息打印到串口。
 
-3.加载内核映像和根文件系统映像
+3. 加载内核映像和根文件系统映像
 
 (1) 规划内存占用的布局
 
@@ -288,7 +288,7 @@ while(count) {
 };
 ```
 
-4.设置内核启动参数
+4. 设置内核启动参数
 
 应该说，在将内核映像和根文件系统映像拷贝到 RAM 空间中后，就可以准备启动 Linux 内核了。但是在调用内核之前，应该作一步准备工作，即：设置 Linux 内核的启动参数。
 
@@ -414,7 +414,7 @@ static void setup_end_tag(void)
 }
 ```
 
-5.调用内核
+5. 调用内核
 
 Boot Loader 调用 Linux 内核的方法是直接跳转到内核的第一条指令处，也即直接跳转到 MEM_START＋0x8000 地址处。在跳转时，下列条件要满足：
 
