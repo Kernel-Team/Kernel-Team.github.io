@@ -461,7 +461,7 @@ theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 
 
 
-> Linux 系统启动过程
+* Linux 系统启动过程
 
 
 | 		顺序			|		说明     		|
