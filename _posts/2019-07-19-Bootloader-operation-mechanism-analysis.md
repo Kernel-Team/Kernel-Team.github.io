@@ -437,7 +437,9 @@ MMU 必须关闭；
 ```
 void (*theKernel)(int zero, int arch, u32 params_addr) =
   (void (*)(int, int, u32))KERNEL_RAM_BASE;
-……
+```
+
+
 theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 ```
 
@@ -447,7 +449,7 @@ theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 
 &emsp; 在 boot loader 程序的设计与实现中，没有什么能够比从串口终端正确地收到打印信息能更令人激动了。此外，向串口终端打印信息也是一个非常重要而又有效的调试手段。但是，我们经常会碰到串口终端显示乱码或根本没有显示的问题。造成这个问题主要有两种原因：(1) boot loader 对串口的初始化设置不正确。(2) 运行在 host 端的终端仿真程序对串口的设置不正确，这包括：波特率、奇偶校验、数据位和停止位等方面的设置。
 
-&emsp; 此外，有时也会碰到这样的问题，那就是：在 boot loader 的运行过程中我们可以正确地向串口终端输出信息，但当 boot loader 启动内核后却无法看到内核的启动输出信息。对这一问题的原因可以从以下几个方面来考虑：
+&emsp; 此外，有时也会碰到这样的问题，那就是在 boot loader 的运行过程中我们可以正确地向串口终端输出信息，但当 boot loader 启动内核后却无法看到内核的启动输出信息。对这一问题的原因可以从以下几个方面来考虑
 
 &emsp; &emsp; (1) 首先请确认你的内核在编译时配置了对串口终端的支持，并配置了正确的串口驱动程序。
 
