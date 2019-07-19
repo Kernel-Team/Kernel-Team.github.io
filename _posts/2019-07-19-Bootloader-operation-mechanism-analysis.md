@@ -439,8 +439,6 @@ MMU 必须关闭；
 ```
 void (*theKernel)(int zero, int arch, u32 params_addr) =
   (void (*)(int, int, u32))KERNEL_RAM_BASE;
-```
-
 
 theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 ```
@@ -471,13 +469,9 @@ theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 |		BISO			|		进入BIOS		|
 | bootloader(MBR)		|	加载磁盘主引导记录	|
 | kernel(ramdisk)		|	加载内核			|
-| rootfs			    	|	初始化rootfs		|
+| rootfs			    |	初始化rootfs		|
+| /sbin/init		    |系统初始化。这里的 init 在不同系统上还有所不同，systemd 系统守护进程(现在服务管理程序)|
 
-
-```
-| /sbin/init			    |系统初始化。这里的 init 在不同系统上还有所不同，systemd 系统守护进程(现在服务管理程序)|
-
-```
 
 
 [](参考资料：)
