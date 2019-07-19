@@ -464,7 +464,7 @@ theKernel(0, ARCH_NUMBER, (u32) kernel_params_start);
 > Linux 系统启动过程
 
 | 		顺序			|		说明     		|
-| 		:---:		    |	 	:---: 			|
+| :--------------------:|:---------------------:|
 |		post			|		加电			|
 |		BISO			|		进入BIOS		|
 | bootloader(MBR)		|	加载磁盘主引导记录	|
