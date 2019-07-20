@@ -90,7 +90,7 @@ author:	    "2puT"
 
 &emsp; （假定内核映像与根文件映像（可以在固态存储设备运行）都被加载到RAM中运行）
 
-&emsp;         通常，BootLoader是严重地依赖于硬件而实现的，除了依赖于CPU的体系结构外，bootLoader实际上也依赖于具体的嵌入式板级设备。
+&emsp;         通常，bootloader是严重地依赖于硬件而实现的，除了依赖于CPU的体系结构外，bootLoader实际上也依赖于具体的嵌入式板级设备。
         
 ### 5. bootloader 分为 stage1 和 stage2 两部分
 
