@@ -1,17 +1,17 @@
 # Site settings
-title:          Tale
-description:    "Minimal Jekyll theme for storytellers"
-baseurl:        "/tale"
-url:            "https://chesterhow.github.io"
+title:          Kernel-Team
+description:    "Linux Kernel 0.01 -> now."
+baseurl:        "/"
+url:            "https://kernel-team.github.io"
 
 # Google Analytics
 google_analytics: UA—XXXXXXXX-X
 
 # Author
 author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
+  name:         shipujin
+  url:          https://kernel-team.github.io
+  email:        shipujin.t@gmail.com
 
 # Build settings
 markdown:       kramdown
