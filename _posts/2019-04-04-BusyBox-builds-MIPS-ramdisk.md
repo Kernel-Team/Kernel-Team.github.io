@@ -6,8 +6,10 @@ summary:    Build MIPS-ramdisk using BusyBox
 image:	    "https://github.com/lina-not-linus"
 tags: "BusyBox ramdisk"
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
 
+使用 BusyBox 构建 MIPS ramdisk  <!--more-->
 ## 使用 BusyBox 构建 ramdisk
 
 一. 软件准备

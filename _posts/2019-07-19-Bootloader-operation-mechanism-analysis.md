@@ -6,7 +6,10 @@ summary:    Bootloader mechanism analysis
 image:	    "https://github.com/lina-not-linus"
 tags: bootloader
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
+
+从bootloader的运行机理进行分析启动逻辑。excerpt-separator.<!--more-->
 
 # bootloader 运行机制分析
 

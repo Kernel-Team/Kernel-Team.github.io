@@ -6,7 +6,11 @@ summary:    编译 64-bit grub-mips.efi 启动映像
 image:	    "https://github.com/lina-not-linus"
 tags: grub
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
+
+
+编译grub2-mips启动器，制作 MIPS 架构的 grubmips64el.efi. <!--more-->
 
 ## 编译grub2-mips启动器，制作 MIPS 架构的 grubmips64el.efi 
 ##### Compile the 64-bit grub-mips.efi launcher

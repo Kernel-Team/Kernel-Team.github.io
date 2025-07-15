@@ -6,8 +6,10 @@ summary:    交叉编译配置，并解释了三元组
 image:	    "https://github.com/lina-not-linus"
 tags: "cross_compile"
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
 
+深入理解交叉编译(Cross Compile)  <!--more-->
 ## 深入理解交叉编译(Cross Compile)
 
 

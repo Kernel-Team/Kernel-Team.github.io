@@ -6,7 +6,10 @@ summary:    Build a cross-tool chain
 image:	    "https://github.com/lina-not-linus"
 tags: cross_toolchain
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
+
+自动化构建 MIPS 交叉工具链 <!--more-->
 
 ## 自动化构建 MIPS 交叉工具链
 

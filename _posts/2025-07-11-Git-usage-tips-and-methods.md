@@ -6,9 +6,11 @@ summary:    Git 日常使用技巧
 image:	    "https://github.com/lina-not-linus"
 tags:       Git
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
 
-Git 日常使用技巧，提高生产力.
+Git 日常使用技巧，提高生产力. <!--more-->
+
 
 ### Git usage tips and methods
 

@@ -6,9 +6,11 @@ summary:    Linux kernel dump mechanism analysis
 image:	    "https://github.com/lina-not-linus"
 tags: crash
 author:	    "shipujin"
+excerpt_separator: <!--more-->
 ---
 
 
+Linux kernel dump mechanism analysis <!--more-->
 ## Linux kernel dump mechanism analysis
 
 * 想要了解 Linux 内核转储机制，就要从 kexec - > kdump - > crash 这个递进过程去分析。

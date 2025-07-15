@@ -6,8 +6,10 @@ summary:    阐述编译编译语言的四个阶段
 image:	    "https://github.com/lina-not-linus"
 tags: ELF
 author:	    "2puT"
+excerpt_separator: <!--more-->
 ---
 
+细说编译性语言的编译四大阶段  <!--more-->
 ## 细说编译性语言的编译四大阶段
 
 
