@@ -30,3 +30,15 @@ git tag -d 标签名
 # 删除远程标签tag
 git push origin :refs/tags/标签名
 ```
+
+3.删除branch分支
+
+```
+# 删除本地分支branch
+git branch -d <branch>
+
+# 删除远程分支branch
+git push origin --delete <branch>
+# 或
+git push <remote> :<branch>
+```
